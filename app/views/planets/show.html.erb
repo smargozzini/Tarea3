@@ -1,0 +1,55 @@
+
+
+<center>
+    <h1><%= @planet['data']['planet']['name'] %></h1>
+    
+    <table border="1"> 
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Diameter</th>
+                <th>Rotation period</th>
+                <th>Orbital period</th>
+                <th>Gravity</th>
+                <th>Population</th>
+                <th>Climate</th>
+                <th>Terrain</th>
+                <th>Surface water</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr>
+                <td><%= @planet['data']['planet']['name'] %></td>
+                <td><%= @planet['data']['planet']['diameter'] %></td>
+                <td><%= @planet['data']['planet']['rotationPeriod'] %></td>
+                <td><%= @planet['data']['planet']['orbitalPeriod'] %></td>
+                <td><%= @planet['data']['planet']['gravity'] %></td>
+                <td><%= @planet['data']['planet']['population'] %></td>
+                <td><%= @planet['data']['planet']['climates'] %></td>
+                <td><%= @planet['data']['planet']['terrains'] %></td>
+                <td><%= @planet['data']['planet']['surfaceWater'] %></td>
+            </tr>
+        </tbody>
+    </table> 
+    
+    <table border="1">
+      <thead>
+          <tr>
+            <th>Films</th>
+            <th>Residents</th>
+          </tr>
+      </thead>
+    
+      <tbody>
+          <tr>
+            <td><% @planet['data']['planet']['filmConnection']['films'].each do |m|%>
+              <li><%= link_to m['title'], movie_path(m['id']) %> </li>
+              <% end %></td>
+            <td><% @planet['data']['planet']['residentConnection']['residents'].each do |p|%>
+                <li> <%= link_to p['name'], character_path(p['id']) %> </li>
+                <% end %></td>
+          </tr>
+      </tbody>
+    </table> 
+    </center>

@@ -1,0 +1,62 @@
+
+<center>
+    <h2><%= @starship['data']['starship']['name'] %></h2>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Model</th>
+                <th>Starship class</th>
+                <th>Manufacturer</th>
+                <th>Cost in credits</th>
+                <th>Length</th>
+                <th>Crew</th>
+                <th>Passengers</th>
+                <th>Max atmosphering spped</th>
+                <th>Hyperdrive rating</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr>
+                <td><%= @starship['data']['starship']['name'] %></td>
+                <td><%= @starship['data']['starship']['model'] %></td>
+                <td><%= @starship['data']['starship']['starshipClass'] %></td>
+                <td><%= @starship['data']['starship']['manufacturers'] %></td>
+                <td><%= @starship['data']['starship']['costInCredits'] %></td>
+                <td><%= @starship['data']['starship']['length'] %></td>
+                <td><%= @starship['data']['starship']['crew'] %></td>
+                <td><%= @starship['data']['starship']['passengers'] %></td>
+                <td><%= @starship['data']['starship']['maxStmospheringSpeed'] %></td>
+                <td><%= @starship['data']['starship']['hyperdriveRating'] %></td>
+            </tr>
+        </tbody>
+    </table> 
+    
+    <table border="1">
+      <thead>
+          <tr>
+            <th>MGLT</th>
+            <th>Cargo capacity</th>
+            <th>Consumables</th>
+            <th>Films</th>
+            <th>Pilots</th>
+          </tr>
+      </thead>
+    
+      <tbody>
+          <tr>
+            <td><%= @starship['data']['starship']['MGLT'] %></td>
+            <td><%= @starship['data']['starship']['cargoCapacity'] %></td>
+            <td><%= @starship['data']['starship']['consumables'] %></td>
+            <td><% @starship['data']['starship']['filmConnection']['films'].each do |m|%>
+              <li><%= link_to m['title'], movie_path(m['id']) %></li>
+              <% end %></td>
+            <td><% @starship['data']['starship']['pilotConnection']['pilots'].each do |p|%>
+                <li><%= link_to p['name'], character_path(p['id']) %></li>
+                <% end %></td>
+          </tr>
+      </tbody>
+    </table> 
+    </center>

@@ -1,0 +1,50 @@
+<% @param %>
+<% planets = HTTParty.get('https://swapi.co/api/planets/?search=' + @param) %>
+<% peoples = HTTParty.get('https://swapi.co/api/people/?search=' + @param) %>
+<% starships = HTTParty.get('https://swapi.co/api/starships/?search=' + @param) %>
+<% films = HTTParty.get('https://swapi.co/api/films/?search=' + @param) %>
+
+<%= form_tag(search_path(:search), method: :get) do %>
+<%= text_field_tag(:search, params[:search]) %>
+<%= submit_tag('Search') %>
+<% end %>
+
+<center>
+<h2>Your search</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Films</th>
+            <th>People</th>
+            <th>Planets</th>
+            <th>Starships</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td><% films['results'].each do |film|%>
+                <% b = film['url'] %>
+                <% b = b.split('/') %>
+                <li><%= link_to film['title'], movie_path(b[-1]) %></li>
+                <% end %></td>
+            <td><% peoples['results'].each do |p|%>
+                <% b = p['url'] %>
+                <% b = b.split('/') %>
+                <li><%= link_to p['name'], character_path(b[-1]) %></li>
+                <% end %></td>
+            <td><% planets['results'].each do |pl|%>
+                <% b = pl['url'] %>
+                <% b = b.split('/') %>
+                <li><%= link_to pl['name'], planets_path(b[-1]) %></li>
+                <% end %></td>
+            <td><% starships['results'].each do |s|%>
+                <% b = s['url'] %>
+                <% b = b.split('/') %>
+                <li><%= link_to s['name'], starships_path(b[-1]) %></li>
+                <% end %></td>
+        </tr>
+    </tbody>
+</table border="1"> 
+</center>

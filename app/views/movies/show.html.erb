@@ -1,0 +1,52 @@
+
+<center>
+<h1><%= @movie['data']['film']['title'] %></h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Producer</th>
+            <th>Episode</th>
+            <th>Characters</th>
+            <th>Planets</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td><%= @movie['data']['film']['title'] %></td>
+            <td><%= @movie['data']['film']['releaseDate'] %></td>
+            <td><%= @movie['data']['film']['director'] %></td>
+            <td><%= @movie['data']['film']['producers'] %></td>
+            <td><%= @movie['data']['film']['episodeID'] %></td>
+            <td><% @movie['data']['film']['characterConnection']['characters'].each do |c|%>
+              <li><%= link_to c['name'], character_path(c['id']) %></li>
+              <% end %></td>
+            <td><% @movie['data']['film']['planetConnection']['planets'].each do |p|%>
+              <li><%= link_to p['name'], planets_path(p['id']) %></li>
+              <% end %></td>
+        </tr>
+    </tbody>
+</table> 
+
+<table border="1">
+  <thead>
+      <tr>
+        <th>Starships</th>
+        <th>Opening crawl</th>
+      </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><% @movie['data']['film']['starshipConnection']['starships'].each do |s|%>
+        <li><%= link_to s['name'], starships_path(s['id']) %></li>
+          <% end %></td>
+        <td width="500"><%= @movie['data']['film']['openingCrawl'] %></td>
+      </tr>
+  </tbody>
+</table> 
+</center>

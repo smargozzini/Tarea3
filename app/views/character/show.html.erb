@@ -1,0 +1,53 @@
+
+<center>
+<h1><%= @character['data']['person']['name'] %></h1>
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Birth year</th>
+            <th>Eye color</th>
+            <th>Gender</th>
+            <th>Hair color</th>
+            <th>Height</th>
+            <th>Mass</th>
+            <th>Skin color</th>
+            <th>Homeworld</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td><%= @character['data']['person']['birthYear'] %></td>
+            <td><%= @character['data']['person']['eyeColor'] %></td>
+            <td><%= @character['data']['person']['gender'] %></td>
+            <td><%= @character['data']['person']['hairColor'] %></td>
+            <td><%= @character['data']['person']['height'] %></td>
+            <td><%= @character['data']['person']['mass'] %></td>
+            <td><%= @character['data']['person']['skinColor'] %></td>
+            <td><%= link_to @character['data']['person']['homeworld']['name'], planets_path(@character['data']['person']['homeworld']['id']) %></td>
+        </tr>
+    </tbody>
+</table> 
+
+<table border="1">
+  <thead>
+      <tr>
+        <th>Films</th>
+        <th>Starships</th>
+      </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><% @character['data']['person']['filmConnection']['films'].each do |m|%>
+            <li><%= link_to m['title'], movie_path(m['id']) %></li>
+          <% end %></td>
+        <td><% @character['data']['person']['starshipConnection']['starships'].each do |s|%>
+            <li><%= link_to s['name'], starships_path(s['id']) %></li>
+            <% end %></td>
+      </tr>
+  </tbody>
+</table> 
+</center>

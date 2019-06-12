@@ -1,0 +1,31 @@
+
+
+<center>
+<h1>Star wars</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Producer</th>
+            <th>Episode</th>
+            <th>More</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @movies['data']['allFilms']['edges'].each do |movie|%>
+        <tr>
+            <td><%= movie['node']['title'] %></td>
+            <td><%= movie['node']['releaseDate'] %></td>
+            <td><%= movie['node']['director'] %></td>
+            <td><%= movie['node']['producers'] %></td>
+            <td><%= movie['node']['episodeID'] %></td>
+            <td><%= link_to 'More info', movie_path(movie['node']['id']) %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table> 
+</center>

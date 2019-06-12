@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  episode_id: 1
+  release_date: 2019-03-21
+  director: MyString
+  producer: MyString
+  opening_crwl: MyString
+  species: MyString
+  starships: MyString
+  vehicles: MyString
+  characters: MyString
+  planets: MyString
+  url: MyString
+  created: MyString
+  edited: MyString
+
+two:
+  title: MyString
+  episode_id: 1
+  release_date: 2019-03-21
+  director: MyString
+  producer: MyString
+  opening_crwl: MyString
+  species: MyString
+  starships: MyString
+  vehicles: MyString
+  characters: MyString
+  planets: MyString
+  url: MyString
+  created: MyString
+  edited: MyString
